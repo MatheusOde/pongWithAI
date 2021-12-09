@@ -4,7 +4,6 @@ import cv2
 import keyboard
 import mouse
 import time
-from turtle import window
 
 screen = np.array(ImageGrab.grab(bbox=gameCoords))
 screen = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
