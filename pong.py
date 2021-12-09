@@ -1,5 +1,6 @@
 import turtle
 import time
+import random
 
 # window setup part
 
@@ -72,6 +73,8 @@ def resetGame():
     machinePaddle.goto(250,0)
     computer = 0
     pen.clear()
+    ball.speedInXAxis = 0.1
+    ball.speedInYAxis = 0.1
 
 window.listen()
 window.onkeypress(paddleUp, "w")
@@ -97,9 +100,12 @@ while(True):
     ball.setx(ball.xcor() + ball.speedInXAxis)
     ball.sety(ball.ycor() + ball.speedInYAxis)
     followBall()
-    if ball.ycor() >= 240 or ball.ycor() <= -240:
-        ball.speedInYAxis = - ball.speedInYAxis
-    
+    if ball.ycor() >= 240:
+        ball.goto(ball.xcor(), ball.ycor() - 10)
+        ball.speedInYAxis = - ball.speedInYAxis * random.randint(2,7) * 0.2
+    if ball.ycor() <= -240:
+        ball.goto(ball.xcor(), ball.ycor() + 10)
+        ball.speedInYAxis = - ball.speedInYAxis * random.randint(2,7) * 0.2
 # collision
     if ball.ycor() <= playerPaddle.ycor()+40 and ball.ycor() >= playerPaddle.ycor()-40 and ball.xcor() >= playerPaddle.xcor()-5 and ball.xcor() <= playerPaddle.xcor()+5:
         ball.speedInXAxis = - ball.speedInXAxis
@@ -110,6 +116,8 @@ while(True):
 # points rules
     if ball.xcor() <= -300:
         ball.goto(0,0)
+        ball.speedInXAxis = 0.1
+        ball.speedInYAxis = 0.1
         computer += 1
         pen.clear()
         pen.write("Player: {}    Computer: {}".format(player, computer) , align="center", font=("Times New Roman", 16, "normal"))
