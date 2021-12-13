@@ -3,27 +3,24 @@ import numpy as np
 # to grab the screen
 import pyscreenshot as ImageGrab
 # to scan the screen color
-import cv2
+#import cv2
 
-#to get inputs and post outputs on to the game
 import keyboard
-import mouse
 
 import time
+bbox = (0, 0, 800, 600)
 
-gameCoords = [656, 32, 1222, 1037]
-
-screen = np.array(ImageGrab.grab(bbox=gameCoords))
-screen = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
+gameCoords = [0, 0, 0, 0]
+systemImage = ImageGrab.grab(bbox)
+screen = np.asanyarray(systemImage)
+#screen = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
 
 # AI loop
-for i in range(1000):
+while (True):
     startTime = time.time()
     for y in range(len(screen)):
         for x in range(len(screen[y])):
             if keyboard.is_pressed('q'):
-                exit
-            if screen[y][x] < 10:
-                mouse.move(x,y, absolute=False, duration=0)
-                mouse.click(button='right')
-    print("Took {} seconds. Up to {} frames".format((time.time() - startTime), i))
+                print('You Pressed A Key!')
+                exit()
+            print("Took {} seconds.".format(time.time() - startTime))

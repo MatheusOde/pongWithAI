@@ -1,2 +1,2 @@
 python3 pong.py &
-python3 AI.py &
+sudo python3 AI.py &
