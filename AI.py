@@ -11,6 +11,8 @@ import mouse
 
 import time
 
+gameCoords = [656, 32, 1222, 1037]
+
 screen = np.array(ImageGrab.grab(bbox=gameCoords))
 screen = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
 
@@ -23,5 +25,5 @@ for i in range(1000):
                 exit
             if screen[y][x] < 10:
                 mouse.move(x,y, absolute=False, duration=0)
-                mouse.click('right'){x, y}
+                mouse.click(button='right')
     print("Took {} seconds. Up to {} frames".format((time.time() - startTime), i))
