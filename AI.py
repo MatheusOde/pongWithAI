@@ -2,8 +2,6 @@
 import numpy as np
 # to grab the screen
 import pyscreenshot as ImageGrab
-# to scan the screen color
-#import cv2
 
 import keyboard
 from pyautogui import press, sleep, typewrite, hotkey
@@ -27,7 +25,6 @@ gameBoxCoords = (x1, y1, x2, y2)
 
 systemImage = ImageGrab.grab(gameBoxCoords)
 screen = np.asanyarray(systemImage)
-#screen = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
 
 # AI loop
 
