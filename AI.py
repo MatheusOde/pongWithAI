@@ -6,6 +6,7 @@ import pyscreenshot as ImageGrab
 #import cv2
 
 import keyboard
+from pyautogui import press, typewrite, hotkey
 
 import time
 bbox = (0, 0, 800, 600)
@@ -21,6 +22,7 @@ while (True):
     for y in range(len(screen)):
         for x in range(len(screen[y])):
             if keyboard.is_pressed('q'):
+                typewrite('q is a letter')
                 print('You Pressed A Key!')
                 exit()
             print("Took {} seconds.".format(time.time() - startTime))
